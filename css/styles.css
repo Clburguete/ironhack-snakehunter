@@ -1,0 +1,24 @@
+.container{
+  height: 800px;
+  width: 800px;
+  margin: 30px auto;
+}
+.cell{
+  background-size: contain;
+  box-sizing: border-box;
+  float: left;
+  height: 16px;
+  width: 16px;
+}
+.board{
+  background-color: black;
+}
+.snake{
+  background-color: white;
+}
+.food{
+  background-color: red;
+}
+.obstacle{
+  background-color: green;
+}
