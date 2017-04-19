@@ -170,19 +170,48 @@ Game.prototype.restart = function() {
     this.generateObstacles();
 
 };
+var textY = 0;
 Game.prototype.stop = function() {
 
     clearInterval(this.currentLevel);
     $(".container").remove();
     $("body").append("<div class='restart'></div>");
     $(".restart").append("<div class ='play'>PLAY AGAIN</div>");
-
+    direction = 0;
+    textY = parseInt($(".play").css("top").replace('px', ''));
+    setInterval(moveTextCollisions, 100);
+    //setInterval(function(){that.moveTextCollisions();},100);
     $(".restart").click(function() {
         location.reload();
     });
 
 };
 
+
+var moveTextCollisions = function() {
+    var movement = 4;
+
+console.log("first iteration");
+console.log("text y coordinate: "+textY);
+    if (90 <= textY && textY <= 424) {
+
+        switch (direction ) {
+            case 0:
+            console.log("case 0: "+direction);
+                textY += movement;
+                $(".play").css("top", textY + "px");
+                if (textY >= 424) direction = 1;
+
+                break;
+            case 1:
+            console.log("case1: " + direction);
+                textY -= movement;
+                $(".play").css("top", textY + "px");
+                if (textY <= 100) direction = 0;
+                break;
+        }
+    }
+};
 var newGame;
 
 
@@ -193,7 +222,11 @@ $(document).ready(function() {
         columns: 50,
         snake: serpiente
     });
-
+    $('.play').mousemove(function(e){
+         var rXP = (e.pageX - this.offsetLeft-$(this).width()/2);
+         var rYP = (e.pageY - this.offsetTop-$(this).height()/2);
+         $('.play').css('text-shadow', +rYP/10+'px '+rXP/80+'px rgba(227,6,19,.8), '+rYP/8+'px '+rXP/60+'px rgba(255,237,0,1), '+rXP/70+'px '+rYP/12+'px rgba(0,159,227,.7)');
+       });
 
 
 });

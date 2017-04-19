@@ -86,6 +86,8 @@ animation: AnimationName 16s ease infinite;
 
 }
 .play{
+  position: absolute;
+  left: 450px;
   color: rgba(255,255,255,0.8);
   width: auto;
   font-size: 80px;
