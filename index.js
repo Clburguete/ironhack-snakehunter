@@ -1,30 +1,6 @@
 function Game(options) {
-    this.colourPalette = [{
-      board: "#020104",
-      snake: "#46413b",
-      obstacles:"#bebab4",
-      food: "#f7f7f6"
-    },
-    {
-      board: "#020104",
-      snake: "#46413b",
-      obstacles:"#bebab4",
-      food: "#f7f7f6"
-    },
-    {
-      board: "#020104",
-      snake: "#46413b",
-      obstacles:"#bebab4",
-      food: "#f7f7f6"
-    },
-    {
-      board: "#020104",
-      snake: "#46413b",
-      obstacles:"#bebab4",
-      food: "#f7f7f6"
-    },
 
-    ];
+
     this.level = 1;
     this.rows = options.rows;
     this.columns = options.columns;
@@ -73,26 +49,29 @@ Game.prototype.clearFood = function() {
     $(".food").removeClass("food");
     this.food = undefined;
 };
-Game.prototype.start = function(){
-  this.setLevel();
+Game.prototype.start = function() {
+    this.setLevel();
 };
+
 Game.prototype.setLevel = function(levelChanged) {
-  if (this.level >=10) {
-    alert('Looks like we got a lazy hunter...Player 1 won!');
-    this.stop();
-  }
-  var levelSpeed = parseInt(500/this.level);
-  if (!this.intervalId) {
-    if (levelChanged) {
-      clearInterval(this.currentLevel);
+    if (this.level >= 10) {
+        alert('Looks like we got a lazy hunter...Player 1 won!');
+        this.stop();
     }
-    this.currentLevel = setInterval(this.update.bind(this), levelSpeed);
-  }
+    var levelSpeed = parseInt(500 / this.level);
+    if (!this.intervalId) {
+        if (levelChanged) {
+            clearInterval(this.currentLevel);
+        }
+        this.currentLevel = setInterval(this.update.bind(this), levelSpeed);
+    }
+
 };
 Game.prototype.update = function() {
     this.snake.moveForward(this.rows, this.columns);
 
     if (this.snake.hasEatenFood(this.food)) {
+        this.clearObstacles();
         this.level++;
         this.setLevel(true);
         this.snake.grow();
@@ -133,28 +112,75 @@ Game.prototype.keyControls = function() {
         }
     }.bind(this));
 };
-//generate obstacles, if minimum radius
+Game.prototype.foodObstacles = function(obstacle) {
+    var food = this.food;
+    var isPossible = true;
+    for (var i = obstacle.row - 3; i < obstacle.row + 3; i++) {
+        for (var j = obstacle.col - 3; j < obstacle.col + 3; j++) {
+            isPossible = false;
+        }
+    }
+    return isPossible;
+};
+//generate obstacles, if minimum radius from snake & food
 Game.prototype.generateObstacles = function() {
     var that = this;
     $(".cell.board").on("click", function(e) {
         var obstacleDataset = e.currentTarget.dataset;
         var snakeHead = that.snake.body[0];
-        if (obstacleDataset.row - snakeHead.row >= 8 || obstacleDataset.col - snakeHead.column >= 8) {
+        //  if ((this.food.row - obstacleDataset.row <= 4 || obstacleDataset.row - this.food.row >= 4) && (this.food.column - obstacleDataset.col <= 4 || obstacleDataset.col - this.food.column >= 4)) {
 
-            $(e.currentTarget).addClass("obstacle");
-            that.obstacles.push({
-                row: obstacleDataset.row,
-                column: obstacleDataset.col
-            });
+        if (that.food.row != obstacleDataset.row && that.food.column != obstacleDataset.col) {
+
+
+            if (that.snake.direction == "right" || that.snake.direction == "down") {
+                if (obstacleDataset.row - snakeHead.row >= 4 || obstacleDataset.col - snakeHead.column >= 4) {
+
+                    $(e.currentTarget).addClass("obstacle");
+                    that.obstacles.push({
+                        row: obstacleDataset.row,
+                        column: obstacleDataset.col
+                    });
+                }
+            } else if (that.snake.direction == "left" || that.snake.direction == "up") {
+                if (snakeHead.row - obstacleDataset.row >= 4 || snakeHead.column - obstacleDataset.col >= 4) {
+
+                    $(e.currentTarget).addClass("obstacle");
+                    that.obstacles.push({
+                        row: obstacleDataset.row,
+                        column: obstacleDataset.col
+                    });
+                }
+            }
         }
+
     });
 
 };
-Game.prototype.stop = function(){
-  if (this.intervalId){
-    clearInterval(this.intervalId);
-    this.intervalId = undefined;
-  }
+Game.prototype.clearObstacles = function() {
+    $(".obstacle").removeClass("obstacle");
+    this.obstacles = [];
+};
+Game.prototype.restart = function() {
+    this.paintBoard();
+    this.generateFood();
+    this.drawFood();
+    this.start();
+    this.keyControls();
+    this.generateObstacles();
+
+};
+Game.prototype.stop = function() {
+
+    clearInterval(this.currentLevel);
+    $(".container").remove();
+    $("body").append("<div class='restart'></div>");
+    $(".restart").append("<div class ='play'>PLAY AGAIN</div>");
+
+    $(".restart").click(function() {
+        location.reload();
+    });
+
 };
 
 var newGame;
@@ -167,4 +193,7 @@ $(document).ready(function() {
         columns: 50,
         snake: serpiente
     });
+
+
+
 });
