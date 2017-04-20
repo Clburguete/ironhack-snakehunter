@@ -97,7 +97,7 @@ Game.prototype.update = function() {
     }
     if (this.snake.cannibal()) {
         this.stop();
-      $(".restart").append("<div class ='player1'><h1>WHY DID YOU EAT YOURSELF?</h2></div>");
+      $(".restart").append("<div class ='player2' ><h1>WHY DID YOU EAT YOURSELF?</h2></div>");
 
     }
     this.clearSnake();
@@ -188,7 +188,7 @@ Game.prototype.restart = function() {
 };
 var textY = 0;
 Game.prototype.stop = function() {
-
+    document.getElementById("backgroundsound").pause();
     clearInterval(this.currentLevel);
     $(".container").remove();
     $("body").append("<div class='restart'></div>");
