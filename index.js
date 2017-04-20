@@ -54,8 +54,9 @@ Game.prototype.start = function() {
 
 Game.prototype.setLevel = function(levelChanged) {
     if (this.level >= 20) {
-        alert('Looks like we got a lazy hunter...Player 1 won!');
+        //alert('Looks like we got a lazy hunter...Player 1 won!');
         this.stop();
+        $(".restart").append("<div class ='player2'><h1>LOOKS LIKE WE GOT A LAZY HUNTER!</h1></div>");
     }
     var levelSpeed = parseInt(500 / this.level);
     if (!this.intervalId) {
@@ -91,11 +92,11 @@ Game.prototype.update = function() {
         this.drawFood();
     }
     if (this.snake.collisions(this.obstacles)) {
-
         this.stop();
+        $(".restart").append("<div class ='player2'><h1>YOU'VE BEEN HUNTED</h1></div>");
     }
     if (this.snake.cannibal()) {
-
+      $(".restart").append("<div class ='player1'><h1>WHY DID YOU EAT YOURSELF?</h2></div>");
         this.stop();
     }
     this.clearSnake();
@@ -241,6 +242,10 @@ $(document).ready(function() {
         console.log("mute");
     });
 
+    $(".instructions h3").on("click", function() {
+        document.getElementById("backgroundsound").pause();
+        console.log("mute");
+    });
 
 
 });

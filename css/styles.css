@@ -1,204 +1,379 @@
-body{
-/*background-color: #FEE5AC;*/
-
-font-family: 'Poppins' , sans-serif;
-text-align: center;
-height: 550px;
-background: linear-gradient(0deg, #00ffbd, #c90000);
-background-size: 300% 300%;
-
--webkit-animation: backgroundgradient 10s ease infinite;
--moz-animation: backgroundgradient 10s ease infinite;
-animation: backgroundgradient 10s ease infinite;
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    height: 550px;
+    background: linear-gradient(0deg, #00ffbd, #c90000);
+    background-size: 300% 300%;
+    -webkit-animation: backgroundgradient 10s ease infinite;
+    -moz-animation: backgroundgradient 10s ease infinite;
+    animation: backgroundgradient 10s ease infinite;
 }
+
 @-webkit-keyframes backgroundgradient {
-    0%{background-position:20% 80%}
-    50%{background-position:80% 50%}
-    100%{background-position:20% 80%}
+    0% {
+        background-position: 20% 80%
+    }
+    50% {
+        background-position: 80% 50%
+    }
+    100% {
+        background-position: 20% 80%
+    }
 }
+
 @-moz-keyframes backgroundgradient {
-    0%{background-position:20% 80%}
-    50%{background-position:80% 50%}
-    100%{background-position:20% 80%}
+    0% {
+        background-position: 20% 80%
+    }
+    50% {
+        background-position: 80% 50%
+    }
+    100% {
+        background-position: 20% 80%
+    }
 }
+
 @keyframes backgroundgradient {
-    0%{background-position:20% 80%}
-    50%{background-position:80% 50%}
-    100%{background-position:20% 80%}
+    0% {
+        background-position: 20% 80%
+    }
+    50% {
+        background-position: 80% 50%
+    }
+    100% {
+        background-position: 20% 80%
+    }
 }
-#mute{
-  width: 50px;
-  height: 50px;
 
-  display: inline-block;
+#mute {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    float: left;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.level {
+    font-size: 40px;
+    font-family: 'Poppins';
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.8);
+    float: right;
+    margin-right: 40px;
+}
+
+.instructions {
+    padding: 40px 30px;
+    float: left;
+    width: 450px;
+    margin-left: 20px;
+}
+
+.key-container {
+    margin-left: 20px;
+    margin-top: 130px;
+    width: 450px;
+    height: 100px;
+    color: white;
+}
+
+.snake-container {
+    margin-top: 10px;
+    float: left;
+    width: 100px;
+    height: 40px;
+}
+
+.keysnake {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.instruction-container {
+    width: 310px;
+    float: left;
+    margin-left: 10px;
+}
+
+.instruction-container h4 {
+    text-align: left;
+    margin-top: 0px;
+}
+
+.instructions h1 {
+    font-size: 55px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    -webkit-animation: color-change 3s linear infinite;
+    -moz-animation: color-change 3s linear infinite;
+    -o-animation: color-change 3s linear infinite;
+    -ms-animation: color-change 3s linear infinite;
+    animation: color-change 3s linear infinite;
+}
+.instructions h3{
   float: left;
-margin-left: 30px;
-margin-top: 5px;
-
-}
-.level{
-  font-size: 40px;
+  margin-left: 15px;
+  font-size: 20px;
   font-family: 'Poppins';
   font-weight: 100;
-  color: rgba(255,255,255,0.8);
-  float: right;
-  margin-right: 40px;
-}
-.instructions{
-  padding: 40px 30px;
-  float: left;
-  width: 450px;
-}
-.instructions h1{
-  font-size: 55px;
-  font-family: 'Poppins' , sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  -webkit-animation: color-change 3s linear infinite;
-        -moz-animation: color-change 3s linear infinite;
-        -o-animation: color-change 3s linear infinite;
-        -ms-animation: color-change 3s linear infinite;
-        animation: color-change 3s linear infinite;
-    }
+  color: rgba(255, 255, 255, 0.8);
 
-    @-webkit-keyframes color-change {
-        0% { color: rgba(255,255,255,0.2); }
-        25% { color: rgba(255,255,255,0.5); }
-        50% { color: rgba(255,255,255,0.8); }
-        75% {color: rgba(255,255,255,0.5)}
-        100%{color: rgba(255,255,255,0.2)}
+}
+@-webkit-keyframes color-change {
+    0% {
+        color: rgba(255, 255, 255, 0.2);
     }
-    @-moz-keyframes color-change {
-      0% { color: rgba(255,255,255,0.2); }
-      25% { color: rgba(255,255,255,0.5); }
-      50% { color: rgba(255,255,255,0.8); }
-      75% {color: rgba(255,255,255,0.5)}
-      100%{color: rgba(255,255,255,0.2)}
+    25% {
+        color: rgba(255, 255, 255, 0.5);
     }
-    @-ms-keyframes color-change {
-      0% { color: rgba(255,255,255,0.2); }
-      25% { color: rgba(255,255,255,0.5); }
-      50% { color: rgba(255,255,255,0.8); }
-      75% {color: rgba(255,255,255,0.5)}
-      100%{color: rgba(255,255,255,0.2)}
+    50% {
+        color: rgba(255, 255, 255, 0.8);
     }
+    75% {
+        color: rgba(255, 255, 255, 0.5)
+    }
+    100% {
+        color: rgba(255, 255, 255, 0.2)
+    }
+}
 
-    @keyframes color-change {
-      0% { color: rgba(255,255,255,0.2); }
-      25% { color: rgba(255,255,255,0.5); }
-      50% { color: rgba(255,255,255,0.8); }
-      75% {color: rgba(255,255,255,0.5)}
-      100%{color: rgba(255,255,255,0.2)}
+@-moz-keyframes color-change {
+    0% {
+        color: rgba(255, 255, 255, 0.2);
     }
+    25% {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    75% {
+        color: rgba(255, 255, 255, 0.5)
+    }
+    100% {
+        color: rgba(255, 255, 255, 0.2)
+    }
+}
 
-.container{
-  float: left;
-  height: 600px;
-  width: 800px;
-  margin: 100px 50px 0px 30px;
+@-ms-keyframes color-change {
+    0% {
+        color: rgba(255, 255, 255, 0.2);
+    }
+    25% {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    75% {
+        color: rgba(255, 255, 255, 0.5)
+    }
+    100% {
+        color: rgba(255, 255, 255, 0.2)
+    }
 }
-.cell{
-  background-size: contain;
-  box-sizing: border-box;
-  float: left;
-  height: 16px;
-  width: 16px;
+
+@keyframes color-change {
+    0% {
+        color: rgba(255, 255, 255, 0.2);
+    }
+    25% {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    75% {
+        color: rgba(255, 255, 255, 0.5)
+    }
+    100% {
+        color: rgba(255, 255, 255, 0.2)
+    }
 }
-.board{
-  background-color: rgba(255, 0, 0, 0.1);
+
+.container {
+    float: left;
+    height: 600px;
+    width: 800px;
+    margin: 100px 50px 0px 30px;
 }
-.snake{
-  background-color: rgba(255,255,255,0.5);
+
+.cell {
+    background-size: contain;
+    box-sizing: border-box;
+    float: left;
+    height: 16px;
+    width: 16px;
 }
-.food{
-  background-color: red;
-  animation-name: foodblink;
-  animation-duration: 1s;
-  animation-iteration-count:infinite;
-  transition-timing-function: ease;
+
+.board {
+    background-color: rgba(255, 0, 0, 0.1);
 }
+
+.snake {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.food {
+    background-color: red;
+    animation-name: foodblink;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    transition-timing-function: ease;
+}
+
 @keyframes foodblink {
-    0%   {background-color:black;}
-    25%  {background-color:#800000;}
-    50%  {background-color:#b83434;}
-    75%  {background-color:#2F4F4F;}
-    100% {background-color:black;}
-  }
-.obstacle{
-  background-color: black;
-  animation: shake 1s infinite;
+    0% {
+        background-color: black;
+    }
+    25% {
+        background-color: #800000;
+    }
+    50% {
+        background-color: #b83434;
+    }
+    75% {
+        background-color: #2F4F4F;
+    }
+    100% {
+        background-color: black;
+    }
 }
+
+.obstacle {
+    background-color: black;
+    animation: shake 1s infinite;
+}
+
+.keyobstacle {
+    background-color: black;
+    animation: shake 1s infinite;
+}
+
 @keyframes shake {
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-  20%, 80% {
-    transform: translate3d(1px, 0, 0);
-  }
-  30%, 50%, 70% {
-    transform: translate3d(-1px, 0, 0);
-  }
-  40%, 60% {
-    transform: translate3d(1px, 0, 0);
-  }
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+        transform: translate3d(1px, 0, 0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    40%, 60% {
+        transform: translate3d(1px, 0, 0);
+    }
 }
-.restart{
-  float: left;
-  margin: 100px 50px 0px 30px;
-  width: 800px;
-  height: 420px;
-  margin: 100px auto;
-  padding: 0px;
-  background-color: rgba(255,255,255,0.2);
 
+.restart {
+    float: left;
+    margin: 100px 50px 0px 30px;
+    width: 800px;
+    height: 420px;
+    margin: 100px auto;
+    padding: 0px;
+    background-color: rgba(255, 255, 255, 0.2);
 }
-h1{
-  font-family: 'Poppins' , sans-serif;
-  font-size: 80px;
-  font-weight: 900;
-}
-.play{
 
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 80px;
+    font-weight: 900;
+}
+
+.play {
+    position: relative;
+    color: rgba(255, 255, 255, 0.8);
+    width: auto;
+    font-size: 80px;
+    font-weight: 900;
+}
+
+.play h1 {
+    -webkit-animation: playcolor 3s linear infinite;
+    -moz-animation: playcolor 3s linear infinite;
+    -o-animation: playcolor 3s linear infinite;
+    -ms-animation: playcolor 3s linear infinite;
+    animation: playcolor 3s linear infinite;
+}
+
+@-webkit-keyframes playcolor {
+    0% {
+        color: rgba(0, 0, 0, 0.2);
+    }
+    25% {
+        color: rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        color: rgba(0, 0, 0, 1);
+    }
+    75% {
+        color: rgba(0, 0, 0, 0.5)
+    }
+    100% {
+        color: rgba(0, 0, 0, 0.2)
+    }
+}
+
+@-moz-keyframes playcolor {
+    0% {
+        color: rgba(0, 0, 0, 0.2);
+    }
+    25% {
+        color: rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        color: rgba(0, 0, 0, 1);
+    }
+    75% {
+        color: rgba(0, 0, 0, 0.5)
+    }
+    100% {
+        color: rgba(0, 0, 0, 0.2)
+    }
+}
+
+@-ms-keyframes playcolor {
+    0% {
+        color: rgba(0, 0, 0, 0.2);
+    }
+    25% {
+        color: rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        color: rgba(0, 0, 0, 1);
+    }
+    75% {
+        color: rgba(0, 0, 0, 0.5)
+    }
+    100% {
+        color: rgba(0, 0, 0, 0.2)
+    }
+}
+
+@keyframes playcolor {
+    0% {
+        color: rgba(255, 255, 255, 0.2);
+    }
+    25% {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        color: rgba(255, 255, 255, 1);
+    }
+    75% {
+        color: rgba(255, 255, 255, 0.5)
+    }
+    100% {
+        color: rgba(255, 255, 255, 0.2)
+    }
+}
+.player2{
   position: relative;
-  color: rgba(255,255,255,0.8);
-  width: auto;
-  font-size: 80px;
-  font-weight: 900;
+  margin-top: -130px;
+  z-index: 1;
 }
-.play h1{
-  -webkit-animation: playcolor 3s linear infinite;
-        -moz-animation: playcolor 3s linear infinite;
-        -o-animation: playcolor 3s linear infinite;
-        -ms-animation: playcolor 3s linear infinite;
-        animation: playcolor 3s linear infinite;
-    }
-
-    @-webkit-keyframes playcolor {
-        0% { color: rgba(0,0,0,0.2); }
-        25% { color: rgba(0,0,0,0.5); }
-        50% { color: rgba(0,0,0,1); }
-        75% {color: rgba(0,0,0,0.5)}
-        100%{color: rgba(0,0,0,0.2)}
-    }
-    @-moz-keyframes playcolor {
-      0% { color: rgba(0,0,0,0.2); }
-      25% { color: rgba(0,0,0,0.5); }
-      50% { color: rgba(0,0,0,1); }
-      75% {color: rgba(0,0,0,0.5)}
-      100%{color: rgba(0,0,0,0.2)}
-    }
-    @-ms-keyframes playcolor {
-      0% { color: rgba(0,0,0,0.2); }
-      25% { color: rgba(0,0,0,0.5); }
-      50% { color: rgba(0,0,0,1); }
-      75% {color: rgba(0,0,0,0.5)}
-      100%{color: rgba(0,0,0,0.2)}
-    }
-
-    @keyframes playcolor {
-      0% { color: rgba(255,255,255,0.2); }
-      25% { color: rgba(255,255,255,0.5); }
-      50% { color: rgba(255,255,255,1); }
-      75% {color: rgba(255,255,255,0.5)}
-      100%{color: rgba(255,255,255,0.2)}
-    }
+.player2 h1{
+  font-size: 70px;
+}
