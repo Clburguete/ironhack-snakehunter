@@ -7,7 +7,6 @@ function Game(options) {
     this.snake = options.snake;
     this.food = undefined;
     this.obstacles = [];
-    //this.drawSnake();
     this.paintBoard();
     this.generateFood();
     this.drawFood();
@@ -54,7 +53,7 @@ Game.prototype.start = function() {
 };
 
 Game.prototype.setLevel = function(levelChanged) {
-    if (this.level >= 10) {
+    if (this.level >= 20) {
         alert('Looks like we got a lazy hunter...Player 1 won!');
         this.stop();
     }
@@ -64,8 +63,20 @@ Game.prototype.setLevel = function(levelChanged) {
             clearInterval(this.currentLevel);
         }
         this.currentLevel = setInterval(this.update.bind(this), levelSpeed);
-    }
 
+        var minPR = 0.5;
+        var maxPR = 3;
+        var level = Math.min(this.level - 1, 12);
+        var maxLevels = 12;
+        var audio = document.getElementById("backgroundsound");
+
+//audio acceleration
+        audio.playbackRate = minPR + ((level * (maxPR - minPR)) / maxLevels);
+        console.log("AudiPR ->" + audio.playbackRate);
+        console.log(level);
+//level render in DOM
+        $(".level").html("LEVEL: "+this.level);
+    }
 };
 Game.prototype.update = function() {
     this.snake.moveForward(this.rows, this.columns);
@@ -80,11 +91,11 @@ Game.prototype.update = function() {
         this.drawFood();
     }
     if (this.snake.collisions(this.obstacles)) {
-        alert('Game Over');
+
         this.stop();
     }
     if (this.snake.cannibal()) {
-        alert('Game Over');
+
         this.stop();
     }
     this.clearSnake();
@@ -95,7 +106,9 @@ Game.prototype.clearSnake = function() {
     $('.snake').removeClass('snake');
 };
 Game.prototype.keyControls = function() {
+
     $('body').on('keydown', function(e) {
+        console.log("keypressed");
         switch (e.keyCode) {
             case 38: // arrow up
                 this.snake.goUp();
@@ -126,6 +139,7 @@ Game.prototype.foodObstacles = function(obstacle) {
 Game.prototype.generateObstacles = function() {
     var that = this;
     $(".cell.board").on("click", function(e) {
+        console.log('click');
         var obstacleDataset = e.currentTarget.dataset;
         var snakeHead = that.snake.body[0];
         //  if ((this.food.row - obstacleDataset.row <= 4 || obstacleDataset.row - this.food.row >= 4) && (this.food.column - obstacleDataset.col <= 4 || obstacleDataset.col - this.food.column >= 4)) {
@@ -176,7 +190,7 @@ Game.prototype.stop = function() {
     clearInterval(this.currentLevel);
     $(".container").remove();
     $("body").append("<div class='restart'></div>");
-    $(".restart").append("<div class ='play'>PLAY AGAIN</div>");
+    $(".restart").append("<div class ='play'><h1>PLAY AGAIN</h1></div>");
     direction = 0;
     textY = parseInt($(".play").css("top").replace('px', ''));
     setInterval(moveTextCollisions, 100);
@@ -191,23 +205,23 @@ Game.prototype.stop = function() {
 var moveTextCollisions = function() {
     var movement = 4;
 
-console.log("first iteration");
-console.log("text y coordinate: "+textY);
-    if (90 <= textY && textY <= 424) {
+    console.log("first iteration");
+    console.log("text y coordinate: " + textY);
+    if (0 <= textY && textY <= 250) {
 
-        switch (direction ) {
+        switch (direction) {
             case 0:
-            console.log("case 0: "+direction);
+                console.log("case 0: " + direction);
                 textY += movement;
                 $(".play").css("top", textY + "px");
-                if (textY >= 424) direction = 1;
+                if (textY == 248) direction = 1;
 
                 break;
             case 1:
-            console.log("case1: " + direction);
+                console.log("case1: " + direction);
                 textY -= movement;
                 $(".play").css("top", textY + "px");
-                if (textY <= 100) direction = 0;
+                if (textY <= 0) direction = 0;
                 break;
         }
     }
@@ -222,11 +236,11 @@ $(document).ready(function() {
         columns: 50,
         snake: serpiente
     });
-    $('.play').mousemove(function(e){
-         var rXP = (e.pageX - this.offsetLeft-$(this).width()/2);
-         var rYP = (e.pageY - this.offsetTop-$(this).height()/2);
-         $('.play').css('text-shadow', +rYP/10+'px '+rXP/80+'px rgba(227,6,19,.8), '+rYP/8+'px '+rXP/60+'px rgba(255,237,0,1), '+rXP/70+'px '+rYP/12+'px rgba(0,159,227,.7)');
-       });
+    $("#mute").on("click", function() {
+        document.getElementById("backgroundsound").pause();
+        console.log("mute");
+    });
+
 
 
 });

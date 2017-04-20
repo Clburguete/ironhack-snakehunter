@@ -1,36 +1,101 @@
 body{
 /*background-color: #FEE5AC;*/
 
-font-family: sans-serif;
+font-family: 'Poppins' , sans-serif;
 text-align: center;
-height: 600px;
+height: 550px;
 background: linear-gradient(0deg, #00ffbd, #c90000);
-background-size: 400% 400%;
+background-size: 300% 300%;
 
--webkit-animation: AnimationName 16s ease infinite;
--moz-animation: AnimationName 16s ease infinite;
-animation: AnimationName 16s ease infinite;
+-webkit-animation: backgroundgradient 10s ease infinite;
+-moz-animation: backgroundgradient 10s ease infinite;
+animation: backgroundgradient 10s ease infinite;
 }
-@-webkit-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+@-webkit-keyframes backgroundgradient {
+    0%{background-position:20% 80%}
+    50%{background-position:80% 50%}
+    100%{background-position:20% 80%}
 }
-@-moz-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+@-moz-keyframes backgroundgradient {
+    0%{background-position:20% 80%}
+    50%{background-position:80% 50%}
+    100%{background-position:20% 80%}
 }
-@keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+@keyframes backgroundgradient {
+    0%{background-position:20% 80%}
+    50%{background-position:80% 50%}
+    100%{background-position:20% 80%}
 }
+#mute{
+  width: 50px;
+  height: 50px;
+
+  display: inline-block;
+  float: left;
+margin-left: 30px;
+margin-top: 5px;
+
+}
+.level{
+  font-size: 40px;
+  font-family: 'Poppins';
+  font-weight: 100;
+  color: rgba(255,255,255,0.8);
+  float: right;
+  margin-right: 40px;
+}
+.instructions{
+  padding: 40px 30px;
+  float: left;
+  width: 450px;
+}
+.instructions h1{
+  font-size: 55px;
+  font-family: 'Poppins' , sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  -webkit-animation: color-change 3s linear infinite;
+        -moz-animation: color-change 3s linear infinite;
+        -o-animation: color-change 3s linear infinite;
+        -ms-animation: color-change 3s linear infinite;
+        animation: color-change 3s linear infinite;
+    }
+
+    @-webkit-keyframes color-change {
+        0% { color: rgba(255,255,255,0.2); }
+        25% { color: rgba(255,255,255,0.5); }
+        50% { color: rgba(255,255,255,0.8); }
+        75% {color: rgba(255,255,255,0.5)}
+        100%{color: rgba(255,255,255,0.2)}
+    }
+    @-moz-keyframes color-change {
+      0% { color: rgba(255,255,255,0.2); }
+      25% { color: rgba(255,255,255,0.5); }
+      50% { color: rgba(255,255,255,0.8); }
+      75% {color: rgba(255,255,255,0.5)}
+      100%{color: rgba(255,255,255,0.2)}
+    }
+    @-ms-keyframes color-change {
+      0% { color: rgba(255,255,255,0.2); }
+      25% { color: rgba(255,255,255,0.5); }
+      50% { color: rgba(255,255,255,0.8); }
+      75% {color: rgba(255,255,255,0.5)}
+      100%{color: rgba(255,255,255,0.2)}
+    }
+
+    @keyframes color-change {
+      0% { color: rgba(255,255,255,0.2); }
+      25% { color: rgba(255,255,255,0.5); }
+      50% { color: rgba(255,255,255,0.8); }
+      75% {color: rgba(255,255,255,0.5)}
+      100%{color: rgba(255,255,255,0.2)}
+    }
 
 .container{
+  float: left;
   height: 600px;
   width: 800px;
-  margin: 100px auto 0px auto;
+  margin: 100px 50px 0px 30px;
 }
 .cell{
   background-size: contain;
@@ -78,6 +143,8 @@ animation: AnimationName 16s ease infinite;
   }
 }
 .restart{
+  float: left;
+  margin: 100px 50px 0px 30px;
   width: 800px;
   height: 420px;
   margin: 100px auto;
@@ -85,11 +152,53 @@ animation: AnimationName 16s ease infinite;
   background-color: rgba(255,255,255,0.2);
 
 }
+h1{
+  font-family: 'Poppins' , sans-serif;
+  font-size: 80px;
+  font-weight: 900;
+}
 .play{
-  position: absolute;
-  left: 450px;
+
+  position: relative;
   color: rgba(255,255,255,0.8);
   width: auto;
   font-size: 80px;
   font-weight: 900;
 }
+.play h1{
+  -webkit-animation: playcolor 3s linear infinite;
+        -moz-animation: playcolor 3s linear infinite;
+        -o-animation: playcolor 3s linear infinite;
+        -ms-animation: playcolor 3s linear infinite;
+        animation: playcolor 3s linear infinite;
+    }
+
+    @-webkit-keyframes playcolor {
+        0% { color: rgba(0,0,0,0.2); }
+        25% { color: rgba(0,0,0,0.5); }
+        50% { color: rgba(0,0,0,1); }
+        75% {color: rgba(0,0,0,0.5)}
+        100%{color: rgba(0,0,0,0.2)}
+    }
+    @-moz-keyframes playcolor {
+      0% { color: rgba(0,0,0,0.2); }
+      25% { color: rgba(0,0,0,0.5); }
+      50% { color: rgba(0,0,0,1); }
+      75% {color: rgba(0,0,0,0.5)}
+      100%{color: rgba(0,0,0,0.2)}
+    }
+    @-ms-keyframes playcolor {
+      0% { color: rgba(0,0,0,0.2); }
+      25% { color: rgba(0,0,0,0.5); }
+      50% { color: rgba(0,0,0,1); }
+      75% {color: rgba(0,0,0,0.5)}
+      100%{color: rgba(0,0,0,0.2)}
+    }
+
+    @keyframes playcolor {
+      0% { color: rgba(255,255,255,0.2); }
+      25% { color: rgba(255,255,255,0.5); }
+      50% { color: rgba(255,255,255,1); }
+      75% {color: rgba(255,255,255,0.5)}
+      100%{color: rgba(255,255,255,0.2)}
+    }
