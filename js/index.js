@@ -96,8 +96,9 @@ Game.prototype.update = function() {
         $(".restart").append("<div class ='player2'><h1>YOU'VE BEEN HUNTED</h1></div>");
     }
     if (this.snake.cannibal()) {
-      $(".restart").append("<div class ='player1'><h1>WHY DID YOU EAT YOURSELF?</h2></div>");
         this.stop();
+      $(".restart").append("<div class ='player1'><h1>WHY DID YOU EAT YOURSELF?</h2></div>");
+
     }
     this.clearSnake();
     this.drawSnake();
