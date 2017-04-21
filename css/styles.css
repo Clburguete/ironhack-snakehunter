@@ -1,3 +1,6 @@
+
+
+
 body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
@@ -377,4 +380,16 @@ h1 {
 }
 .player2 h1{
   font-size: 70px;
+}
+
+@media screen and (max-width: 1420px){
+  .instructions{
+    margin: auto;
+    float: none;
+  }
+  .container{
+    margin: 100px auto 0px auto;
+    float: none;
+
+  }
 }

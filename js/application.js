@@ -110,6 +110,7 @@ Game.prototype.clearSnake = function() {
 Game.prototype.keyControls = function() {
 
     $('body').on('keydown', function(e) {
+      e.preventDefault();
         console.log("keypressed");
         switch (e.keyCode) {
             case 38: // arrow up
@@ -232,6 +233,9 @@ var moveTextCollisions = function() {
 
 
 $(document).ready(function() {
+  $(document).bind("touchmove",function(event){
+event.preventDefault();
+});
   var newGame;
     var serpiente = new Snake();
     newGame = new Game({
