@@ -228,10 +228,11 @@ var moveTextCollisions = function() {
         }
     }
 };
-var newGame;
+
 
 
 $(document).ready(function() {
+  var newGame;
     var serpiente = new Snake();
     newGame = new Game({
         rows: 30,
