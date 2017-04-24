@@ -390,6 +390,14 @@ h1 {
   .container{
     margin: 100px auto 0px auto;
     float: none;
+  }
+  .restart{
+    float: none;
+    margin: auto;
+  }
+  .play{
+    width: 750px;
+    margin-left: 25px;
 
   }
 }
